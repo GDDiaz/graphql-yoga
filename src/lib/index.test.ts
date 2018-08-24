@@ -49,8 +49,8 @@ async function startServer(t: TestContext & Context<any>, options?: Options) {
   }
 
   const server = new GraphQLServer({ typeDefs, resolvers })
-  const http = await server.start({ port: 0, ...options })
-  const { port } = http.address()
+  const http: any = await server.start({ port: 0, ...options })
+  const { port } = http.address();
   const uri = `http://localhost:${port}/`
 
   if (t.context.httpServers) {
